@@ -42,43 +42,5 @@ const Main = (props) => {
     )
   }
 
-
-/*
-
-class Main extends Component {
-    constructor() {
-        super()
-        this.vantaRef = React.createRef()
-    }
-    componentDidMount() {
-        this.vantaEffect = BIRDS({
-            el: this.vantaRef.current,
-            THREE: THREE,
-            p5: p5,
-        })
-    }
-    componentWillUnmount() {
-        if (this.vantaEffect) this.vantaEffect.destroy()
-    }
-
-    render() {
-        const {
-            location,
-          } = this.props;
-
-        return (
-            <div className="main">
-                <Header />
-                <Menu />
-                <Switch location={location}>
-                    <Route path="/home" component={HomePage} />
-                    <Redirect to="/home" />
-                </Switch>
-                <Footer />
-            </div>
-        );
-    }
-}
-*/
 export default Main;
  
