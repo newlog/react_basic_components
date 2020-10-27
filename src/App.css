@@ -1,5 +1,5 @@
 .main {
-  background-color: rgb(117, 105, 106);
+  
 }
 
 .header {
@@ -9,12 +9,14 @@
 .home {
   height: 80vh;
   overflow: auto;
-  background-color: gray;
+  
+
+  
 }
 
 .footer {
   height: 5vh;
-  background-color: white;
+  
 }
 
 .Paper {
