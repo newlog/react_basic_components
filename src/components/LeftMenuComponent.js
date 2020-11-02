@@ -16,10 +16,16 @@ import EmailIcon from '@material-ui/icons/Email';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import PersonIcon from '@material-ui/icons/Person';
+import { Link } from 'react-router-dom';
+
 
 const drawerWidth = 180;
 
 const useStyles = makeStyles((theme) => ({
+  BackdropProps: {
+    background: 'transparent',
+    border: 0
+  },
   fixToBottom: {
     marginTop: 'auto',
   },
@@ -49,7 +55,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-
 const LeftMenu = () => {
       const classes = useStyles();
       const [open, setOpen] = React.useState(false);
@@ -68,6 +73,7 @@ const LeftMenu = () => {
             })}
             classes={{
               paper: clsx({
+                [classes.BackdropProps]: true,
                 [classes.drawerOpen]: open,
                 [classes.drawerClose]: !open,
               }),
@@ -81,11 +87,11 @@ const LeftMenu = () => {
             </div>
             <Divider />
             <List>
-              <ListItem button>
+              <ListItem button component={Link} to="/home">
                 <ListItemIcon><HomeIcon  /></ListItemIcon>
                 <ListItemText primary="Home" />
               </ListItem>
-              <ListItem button>
+              <ListItem button component={Link} to="/writings">
                 <ListItemIcon><CreateIcon /></ListItemIcon>
                 <ListItemText primary="Writings" />
               </ListItem>

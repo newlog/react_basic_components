@@ -7,18 +7,48 @@
 }
 
 .home {
-  height: 80vh;
-  overflow: auto;
-  
+  min-height: 100vh;
+  overflow: auto; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
-  
+.writings {
+  min-height: 100vh;
+  overflow: auto; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  animation: text-focus-in 1s ease-in both;
 }
 
 .footer {
   height: 5vh;
-  
 }
 
 .Paper {
   height: 20vh;
+}
+
+#Card {
+  min-width: 500px;
+}
+
+.homeLogo {
+  animation: text-focus-in 1s ease-in both;
+}
+
+@keyframes text-focus-in {
+  0% {
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
 }

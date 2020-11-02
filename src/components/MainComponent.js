@@ -3,8 +3,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from './HomeComponent'
 import Menu from './LeftMenuComponent';
 import '../App.css'
-import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import Writings from './WritingsComponent';
 
 class Main extends Component {
     render() {
@@ -14,10 +14,10 @@ class Main extends Component {
 
         return (
             <div className="main">
-                <Header />
                 <Menu />
                 <Switch location={location}>
                     <Route path="/home" component={HomePage} />
+                    <Route path="/writings" component={Writings} />
                     <Redirect to="/home" />
                 </Switch>
                 <Footer />
