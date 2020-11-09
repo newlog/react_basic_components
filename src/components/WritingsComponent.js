@@ -15,6 +15,7 @@ import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
 import '../App.css';
+import Header from './HeaderComponent';
 
 const documents = [
     {
@@ -107,6 +108,7 @@ const useRowStyles = makeStyles({
       },
       maxWidth: '60vw',
       maxHeight: '80vh',
+      marginTop: '-15vh'
     },
     displayLinebreak: {
         whiteSpace: 'pre-line',
@@ -152,27 +154,30 @@ function Row(props) {
  const Writings = () => {
     const classes = useRowStyles();
     return (
-        <div className="writings">
-            <Box ml={8}>
-                <TableContainer component={Paper} className={classes.root}>
-                    <Table aria-label="collapsible table">
-                        <TableHead>
-                            <TableRow>
-                                <TableCell align="left">title</TableCell>
-                                <TableCell align="left">published</TableCell>
-                                <TableCell align="right">tags</TableCell>
-                                <TableCell align="right">+info</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {documents.map((row) => (
-                                <Row key={row.id} row={row} />
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </Box>
-        </div>
+        <>
+            <Header />
+            <div className="writings">
+                <Box ml={8}>
+                    <TableContainer component={Paper} className={classes.root}>
+                        <Table aria-label="collapsible table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="left">title</TableCell>
+                                    <TableCell align="left">published</TableCell>
+                                    <TableCell align="right">tags</TableCell>
+                                    <TableCell align="right">+info</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {documents.map((row) => (
+                                    <Row key={row.id} row={row} />
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Box>
+            </div>
+        </>
     );
 }
 

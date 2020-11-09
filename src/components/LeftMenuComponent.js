@@ -12,10 +12,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import CreateIcon from '@material-ui/icons/Create';
 import HomeIcon from '@material-ui/icons/Home';
-import EmailIcon from '@material-ui/icons/Email';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import PersonIcon from '@material-ui/icons/Person';
 import { Link } from 'react-router-dom';
 
 
@@ -79,13 +77,13 @@ const LeftMenu = () => {
               }),
             }}
           >
-            
+            <div style={{marginBottom: "8px"}}></div>
             <div>
               <IconButton onClick={handleDrawer}>
                 {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
               </IconButton>
             </div>
-            <Divider />
+            <Divider/>
             <List>
               <ListItem button component={Link} to="/home">
                 <ListItemIcon><HomeIcon  /></ListItemIcon>
@@ -95,23 +93,15 @@ const LeftMenu = () => {
                 <ListItemIcon><CreateIcon /></ListItemIcon>
                 <ListItemText primary="Writings" />
               </ListItem>
-              <ListItem button>
-                <ListItemIcon><PersonIcon /></ListItemIcon>
-                <ListItemText primary="Me" />
-              </ListItem>
             </List>
             
             <div className={classes.fixToBottom}>
               <List>
-                <ListItem button>
-                  <ListItemIcon><EmailIcon /></ListItemIcon>
-                  <ListItemText primary="Email" />
-                </ListItem>
-                <ListItem button>
+                <ListItem button component="a" href="https://www.twitter.com/Newlog_" target="_blank">
                   <ListItemIcon><TwitterIcon /></ListItemIcon>
                   <ListItemText primary="Twitter" />
                 </ListItem>
-                <ListItem button>
+                <ListItem button component="a" href="https://www.github.com/newlog" target="_blank">
                   <ListItemIcon><GitHubIcon /></ListItemIcon>
                   <ListItemText primary="GitHub" />
                 </ListItem>

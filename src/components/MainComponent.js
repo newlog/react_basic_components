@@ -6,12 +6,12 @@ import '../App.css'
 import Footer from './FooterComponent';
 import Writings from './WritingsComponent';
 
+
 class Main extends Component {
     render() {
         const {
             location,
           } = this.props;
-
         return (
             <div className="main">
                 <Menu />
