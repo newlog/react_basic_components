@@ -7,20 +7,20 @@ import '../App.css';
 
  const HomePage = () => {
     const homeLogoMindsBox = React.useRef()
+    const homeLogoBox = React.useRef()
     const [spaceInDownExecuted, setSpaceInDownExecuted] = useState(false);
 
     useEffect(() => {
-        addDelayedAnimation()
+        animateMindsLogo()
         if (spaceInDownExecuted) executeFoolishInAnimation();
     });
 
-    const addDelayedAnimation = () => {
-        setTimeout(addPuffInAnimation, 200);
+    const animateMindsLogo = () => {
+        setTimeout(addPuffInAnimationToMinds, 200);
     }
 
-    const addPuffInAnimation = () => {
+    const addPuffInAnimationToMinds = () => {
         const homeLogoMindsBoxNode = homeLogoMindsBox.current;
-        console.log(homeLogoMindsBoxNode.classList)
         if ( !spaceInDownExecuted ) {
             homeLogoMindsBoxNode.classList.add('spaceInDown')
             homeLogoMindsBoxNode.style.display = 'block';
@@ -42,7 +42,7 @@ import '../App.css';
         <Box ml={8} className="home">
             <Grid container spacing={0}>
                 <Grid item xs={12}>
-                    <Box className="homeLogo">
+                    <Box className="homeLogo" ref={homeLogoBox}>
                         <Typography variant="h1">
                             <Box style={{display: "flex"}}> { /* This box is needed with display flex, otherwise the Typography makes the next 2 boxes be in different lines */ } 
                                 <Box pr={3}>Overflowed</Box>
