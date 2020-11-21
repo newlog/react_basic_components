@@ -14,6 +14,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import Chip from '@material-ui/core/Chip';
+import { Remarkable } from 'remarkable';
 import '../App.css';
 import Header from './HeaderComponent';
 
@@ -31,7 +32,21 @@ const documents = [
         'id': 1,
         'title': 'Reverse Engineering Master\'s Degree Course',
         'author': 'newlog',
-        'description': '1. Introduction to Memory Architecture\n2. Binary File Formats\n3. Introduction to Static Analysis\n4. Understanding Instruction Set Architectures\n5. Reverse Engineering Malware\n...Static Analysis\n...Dynamic Analysis\n ...Tactics, Techniques, and Procedures\n...Unpacking\n6. Introduction to non-intel architectures (by pancake)\n7. Forensics seen as a reverse engineer (by pancake)\n8. Vulnerability research (by pancake)',
+        // eslint-disable-next-line no-multi-str
+        'description': '\
+            1. Introduction to Memory Architecture\n\
+            2. Binary File Formats\n\
+            3. Introduction to Static Analysis\n\
+            4. Understanding Instruction Set Architectures\n\
+            5. Reverse Engineering Malware\n\
+                5.1. Static Analysis\n\
+                5.2. Dynamic Analysis\n\
+                5.3. Tactics, Techniques, and Procedures\n\
+                5.4. Unpacking\n\
+            6. Introduction to non-intel architectures (by pancake)\n\
+            7. Forensics seen as a reverse engineer (by pancake)\n\
+            8. Vulnerability research (by pancake)\
+         ',
         'link': 'thsiisthelink',
         'tags': ['course', 'linux', 'windows', 'reverse_engineering'],
         'date': '01/01/2018'
@@ -40,7 +55,28 @@ const documents = [
         'id': 2,
         'title': 'Exploiting in Windows',
         'author': 'newlog',
-        'description': '1. Introduction\n...Stack Frames\n...Hands-on\n2. Stack Based Buffer Overflows\n...Attack Vector #1\n...Overwriting sEIP\n...Real Exploit\n...Attack Vector #2\n...Structured Exception Handling\n...real Exploit\n3. Exploit Mitigation Techniques and Evasion\n...SafeSEH\n...SEHOP\n...Stack Cookies\n...Data Execution Prevention (DEP)\n...Return Oriented Programming (ROP)\n...Real Exploit\n...Address Space Layout Randomization (ASLR)\n...Limitations\n...Real Exploit\n',
+        // eslint-disable-next-line no-multi-str
+        'description': '\
+        1. Introduction\n\
+            1.1. Stack Frames\n\
+            1.2. Hands-on\n\
+        2. Stack Based Buffer Overflows\n\
+            2.1. Attack Vector #1\n\
+            2.2. Overwriting sEIP\n\
+            2.3. Real Exploit\n\
+            2.4. Attack Vector #2\n\
+            2.5. Structured Exception Handling\n\
+            2.6. Real Exploit\n\
+        3. Exploit Mitigation Techniques and Evasion\n\
+            3.1. SafeSEH\n\
+            3.2. SEHOP\n\
+            3.3. Stack Cookies\n\
+            3.4. Data Execution Prevention (DEP)\n\
+            3.5. Return Oriented Programming (ROP)\n\
+            3.6. Real Exploit\n\
+            3.7. Address Space Layout Randomization (ASLR)\n\
+            3.8. Limitations\n\
+            3.9. Real Exploit\n',
         'link': 'thsiisthelink',
         'tags': ['training', 'slides', 'exploiting', 'windows'],
         'date': '01/01/2015'
@@ -120,6 +156,7 @@ function Row(props) {
     const { row } = props;
     const [open, setOpen] = React.useState(false);
     const classes = useRowStyles();
+    var md = new Remarkable();
   
     return (
       <>
@@ -141,8 +178,10 @@ function Row(props) {
           <TableCell style={{ paddingBottom: 0, paddingTop: 0, border: 'none'}} colSpan={6}>
             <Collapse in={open} timeout="auto" unmountOnExit>
               <Box>
-              <TableCell align="left" style={{ border: 'none' }}></TableCell>
-              <TableCell align="left" style={{ border: 'none' }}><div className={classes.displayLinebreak}>{row.description}</div></TableCell>
+                <TableCell align="left" style={{ border: 'none' }}></TableCell>
+                <TableCell align="left" style={{ border: 'none' }}>
+                    <div dangerouslySetInnerHTML={{__html: md.render(row.description)}}></div>
+                </TableCell>
               </Box>
             </Collapse>
           </TableCell>
